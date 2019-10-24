@@ -59,6 +59,16 @@
 
 <script>
 
+  var init = function() {
+    document.addEventListener('keydown', (e) => {
+      var keyPressed = e.which;
+      console.log(keyPressed)
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    init();
+  });
 </script>
 
 
