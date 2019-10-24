@@ -59,10 +59,22 @@
 
 <script>
 
+  var flashKey = function(key) {
+    key.classList.add('playing');
+    setTimeout(() => {
+      key.classList.remove('playing');
+    }, 80);
+  };
+
   var init = function() {
     document.addEventListener('keydown', (e) => {
       var keyPressed = e.which;
-      console.log(keyPressed)
+      var selected = document.querySelectorAll('[data-key]');
+      var matched = Array.from(selected).filter(x => +x.dataset.key === +keyPressed);
+      if (matched.length) {
+        flashKey(matched[0]);
+        // playSound(matched[1]);
+      }
     });
   }
 
