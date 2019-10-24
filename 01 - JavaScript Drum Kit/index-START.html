@@ -67,7 +67,7 @@
   };
 
   var playSound = function(sound) {
-    sound.pause();
+    // sound.pause();
     sound.currentTime = 0;
     sound.play();
   }
@@ -75,8 +75,8 @@
   var init = function() {
     document.addEventListener('keydown', (e) => {
       var keyPressed = e.which;
-      var selected = document.querySelectorAll('[data-key]');
-      var matched = Array.from(selected).filter(x => +x.dataset.key === +keyPressed);
+      var matched = document.querySelectorAll(`[data-key="${keyPressed}"]`);
+      // var matched = Array.from(selected).filter(x => +x.dataset.key === +keyPressed);
       if (matched.length) {
         flashKey(matched[0]);
         playSound(matched[1]);
