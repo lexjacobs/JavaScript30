@@ -91,6 +91,15 @@
     setTime = function() {
       var { seconds, minutes, hours } = getTime();
       var { secAngle, minAngle, hourAngle } = getAngles({seconds, minutes, hours});
+      // avoid the big jump from 360 to 0
+      if (secAngle > 350 || secAngle < 10) {
+        document.querySelector('.hand.second-hand')
+        .style.transitionDuration = '0s'
+      } else {
+        document.querySelector('.hand.second-hand')
+        .style.transitionDuration = ''
+      }
+
       document.querySelector('.hand.second-hand')
       .style.transform = `rotate(${secAngle + 90}deg)`;
       document.querySelector('.hand.min-hand')
